@@ -47,14 +47,14 @@ RSpec.describe PostsController, type: :controller do
   describe 'POST #create' do
     let(:user) { FactoryBot.create :user }
     let(:new_post) { FactoryBot.create :post, user: user }
-    it "creates a new post" do
+    it 'creates a new post' do
       sign_in user
       expect(Post).to receive(:new).and_return(new_post)
       post :create, params: { post: { content: new_post.content, photo: 'photo.jpg' } }
       expect(assigns[:post].attributes).to eq(new_post.attributes)
     end
 
-    it "redirects to the new post path" do
+    it 'redirects to the new post path' do
       sign_in user
       expect(Post).to receive(:new).and_return(new_post)
       post :create, params: { post: { content: new_post.content, photo: 'photo.jpg' } }
