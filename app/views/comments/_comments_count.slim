@@ -1,0 +1,19 @@
+- if post.comments_count == 1
+  = link_to post do
+    span
+      = t('post.comments.view')
+    span.comments-count-text
+      =<> post.comments_count
+    span
+      = t('post.comments.comment')
+- elsif post.comments_count > 1
+  = link_to post do
+    span
+      = t('post.comments.view_all')
+    span.comments-count-text
+      =<> post.comments_count
+    span
+      = t('post.comments.comments')
+- else
+  span
+    = t('post.comments.no_comment')

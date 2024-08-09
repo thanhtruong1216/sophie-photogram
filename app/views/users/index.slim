@@ -1,0 +1,19 @@
+section.users
+  - @users.each do |user|
+      .users__short-info
+        = link_to user_path(user) do
+          .sub-header
+              .avatar-wrapper
+                .avatar-linear-wrapper
+                  - if user.avatar.attached?
+                    = image_tag user.avatar, loading: 'lazy', class: 'linear-avatar'
+                  - else
+                    = image_tag 'user-alt-solid.svg', loading: 'lazy', class: 'linear-avatar'
+          p
+            = user.user_name
+        div
+          p
+            = user.email
+
+.paginate-container
+  = paginate @users
